@@ -16,16 +16,16 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.collections.test;
+package io.github.mrmathami.collections.test;
 
 import com.google.common.collect.testing.SetTestSuiteBuilder;
 import com.google.common.collect.testing.TestCollidingSetGenerator;
 import com.google.common.collect.testing.TestStringSetGenerator;
 import com.google.common.collect.testing.features.CollectionFeature;
 import com.google.common.collect.testing.features.CollectionSize;
+import io.github.mrmathami.collections.ImmutableOrderedSet;
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import mrmathami.collections.ImmutableOrderedSet;
 
 import java.util.Set;
 

@@ -16,26 +16,11 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.count;
+package io.github.mrmathami.annotations;
 
-import mrmathami.annotations.Nonnull;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-import java.io.Serializable;
-
-public final class Counter extends AbstractCounter implements Serializable, Cloneable {
-	private static final long serialVersionUID = -1L;
-
-	public Counter(int count) {
-		super(count);
-	}
-
-	@Nonnull
-	@Override
-	public Counter clone() {
-		try {
-			return (Counter) super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new RuntimeException(e);
-		}
-	}
+@Retention(RetentionPolicy.SOURCE)
+public @interface Internal {
 }

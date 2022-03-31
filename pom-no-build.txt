@@ -20,28 +20,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<packaging>jar</packaging>
 
-	<groupId>mrmathami</groupId>
-	<artifactId>mrmathami.utils</artifactId>
-	<version>1.0.8</version>
+	<groupId>io.github.mrmathami</groupId>
+	<artifactId>utils</artifactId>
+	<version>1.1.0</version>
+	<packaging>jar</packaging>
 
 	<name>MrMaThaMi's utilities</name>
 	<description>Many utilities I often use in my code.</description>
 	<url>https://github.com/thanhminhmr/utils</url>
 
-	<developers>
-		<developer>
-			<name>Mai Thanh Minh</name>
-			<email>thanhminh.mr@gmail.com</email>
-		</developer>
-	</developers>
-
 	<licenses>
 		<license>
-			<name>GNU Lesser General Public License (LGPL), Version 3.0</name>
+			<name>LGPL-3.0-or-later</name>
 			<url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
+	<developers>
+		<developer>
+			<id>thanhminhmr</id>
+			<name>Mai Thanh Minh</name>
+			<email>thanhminh.mr@gmail.com</email>
+			<url>https://github.com/thanhminhmr</url>
+		</developer>
+	</developers>
 </project>

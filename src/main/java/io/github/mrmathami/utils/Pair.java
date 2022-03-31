@@ -16,34 +16,33 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.utils;
+package io.github.mrmathami.utils;
 
-import mrmathami.annotations.Nonnull;
-import mrmathami.annotations.Nullable;
+import io.github.mrmathami.annotations.Nonnull;
+import io.github.mrmathami.annotations.Nullable;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public interface Triple<A, B, C> extends Serializable, Cloneable {
-
+public interface Pair<A, B> extends Serializable, Cloneable {
 	@Nonnull
-	static <A, B, C> Triple<A, B, C> mutableOf(A a, B b, C c) {
-		return new MutableTriple<>(a, b, c);
+	static <A, B> Pair<A, B> mutableOf(A a, B b) {
+		return new MutablePair<>(a, b);
 	}
 
 	@Nonnull
-	static <A, B, C> Triple<A, B, C> mutableOf(@Nonnull Triple<A, B, C> triple) {
-		return new MutableTriple<>(triple.getA(), triple.getB(), triple.getC());
+	static <A, B> Pair<A, B> mutableOf(@Nonnull Pair<A, B> pair) {
+		return new MutablePair<>(pair.getA(), pair.getB());
 	}
 
 	@Nonnull
-	static <A, B, C> Triple<A, B, C> immutableOf(A a, B b, C c) {
-		return new ImmutableTriple<>(a, b, c);
+	static <A, B> Pair<A, B> immutableOf(A a, B b) {
+		return new ImmutablePair<>(a, b);
 	}
 
 	@Nonnull
-	static <A, B, C> Triple<A, B, C> immutableOf(@Nonnull Triple<A, B, C> triple) {
-		return new ImmutableTriple<>(triple.getA(), triple.getB(), triple.getC());
+	static <A, B> Pair<A, B> immutableOf(@Nonnull Pair<A, B> pair) {
+		return new ImmutablePair<>(pair.getA(), pair.getB());
 	}
 
 	A getA();
@@ -54,25 +53,18 @@ public interface Triple<A, B, C> extends Serializable, Cloneable {
 
 	B setB(B b) throws UnsupportedOperationException;
 
-	C getC();
-
-	C setC(C c) throws UnsupportedOperationException;
-
 	@Nonnull
-	Triple<A, B, C> clone();
-
+	Pair<A, B> clone();
 }
 
-final class MutableTriple<A, B, C> implements Triple<A, B, C> {
+final class MutablePair<A, B> implements Pair<A, B> {
 	private static final long serialVersionUID = -1L;
 	private A a;
 	private B b;
-	private C c;
 
-	MutableTriple(A a, B b, C c) {
+	MutablePair(A a, B b) {
 		this.a = a;
 		this.b = b;
-		this.c = c;
 	}
 
 	@Override
@@ -99,24 +91,12 @@ final class MutableTriple<A, B, C> implements Triple<A, B, C> {
 		return oldB;
 	}
 
-	@Override
-	public final C getC() {
-		return c;
-	}
-
-	@Override
-	public final C setC(C c) {
-		final C oldC = this.c;
-		this.c = c;
-		return oldC;
-	}
-
-	@SuppressWarnings("unchecked")
 	@Nonnull
 	@Override
-	public MutableTriple<A, B, C> clone() {
+	@SuppressWarnings("unchecked")
+	public final MutablePair<A, B> clone() {
 		try {
-			return (MutableTriple<A, B, C>) super.clone();
+			return (MutablePair<A, B>) super.clone();
 		} catch (CloneNotSupportedException e) {
 			throw new RuntimeException(e);
 		}
@@ -125,33 +105,31 @@ final class MutableTriple<A, B, C> implements Triple<A, B, C> {
 	@Override
 	public final boolean equals(@Nullable Object object) {
 		if (this == object) return true;
-		if (!(object instanceof Triple)) return false;
-		final Triple<?, ?, ?> triple = (Triple<?, ?, ?>) object;
-		return Objects.equals(a, triple.getA()) && Objects.equals(b, triple.getB()) && Objects.equals(c, triple.getC());
+		if (!(object instanceof Pair)) return false;
+		final Pair<?, ?> pair = (Pair<?, ?>) object;
+		return Objects.equals(a, pair.getA()) && Objects.equals(b, pair.getB());
 	}
 
 	@Override
 	public final int hashCode() {
-		return Objects.hash(a, b, c);
+		return Objects.hash(a, b);
 	}
 
 	@Nonnull
 	@Override
 	public final String toString() {
-		return "{ " + a + ", " + b + ", " + c + " }";
+		return "{ " + a + ", " + b + " }";
 	}
 }
 
-final class ImmutableTriple<A, B, C> implements Triple<A, B, C> {
+final class ImmutablePair<A, B> implements Pair<A, B> {
 	private static final long serialVersionUID = -1L;
 	private final A a;
 	private final B b;
-	private final C c;
 
-	ImmutableTriple(A a, B b, C c) {
+	ImmutablePair(A a, B b) {
 		this.a = a;
 		this.b = b;
-		this.c = c;
 	}
 
 	@Override
@@ -161,7 +139,7 @@ final class ImmutableTriple<A, B, C> implements Triple<A, B, C> {
 
 	@Override
 	public final A setA(A a) throws UnsupportedOperationException {
-		throw new UnsupportedOperationException("Immutable triple can't be modified.");
+		throw new UnsupportedOperationException("Immutable pair can't be modified.");
 	}
 
 	@Override
@@ -171,25 +149,15 @@ final class ImmutableTriple<A, B, C> implements Triple<A, B, C> {
 
 	@Override
 	public final B setB(B b) throws UnsupportedOperationException {
-		throw new UnsupportedOperationException("Immutable triple can't be modified.");
+		throw new UnsupportedOperationException("Immutable pair can't be modified.");
 	}
 
-	@Override
-	public final C getC() {
-		return c;
-	}
-
-	@Override
-	public final C setC(C c) throws UnsupportedOperationException {
-		throw new UnsupportedOperationException("Immutable triple can't be modified.");
-	}
-
-	@SuppressWarnings("unchecked")
 	@Nonnull
 	@Override
-	public ImmutableTriple<A, B, C> clone() {
+	@SuppressWarnings("unchecked")
+	public ImmutablePair<A, B> clone() {
 		try {
-			return (ImmutableTriple<A, B, C>) super.clone();
+			return (ImmutablePair<A, B>) super.clone();
 		} catch (CloneNotSupportedException e) {
 			throw new RuntimeException(e);
 		}
@@ -198,19 +166,19 @@ final class ImmutableTriple<A, B, C> implements Triple<A, B, C> {
 	@Override
 	public final boolean equals(@Nullable Object object) {
 		if (this == object) return true;
-		if (!(object instanceof Triple)) return false;
-		final Triple<?, ?, ?> triple = (Triple<?, ?, ?>) object;
-		return Objects.equals(a, triple.getA()) && Objects.equals(b, triple.getB()) && Objects.equals(c, triple.getC());
+		if (!(object instanceof Pair)) return false;
+		final Pair<?, ?> pair = (Pair<?, ?>) object;
+		return Objects.equals(a, pair.getA()) && Objects.equals(b, pair.getB());
 	}
 
 	@Override
 	public final int hashCode() {
-		return Objects.hash(a, b, c);
+		return Objects.hash(a, b);
 	}
 
 	@Nonnull
 	@Override
 	public final String toString() {
-		return "{ " + a + ", " + b + ", " + c + " }";
+		return "{ " + a + ", " + b + " }";
 	}
 }

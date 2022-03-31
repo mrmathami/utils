@@ -16,7 +16,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.count;
+package io.github.mrmathami.count;
 
 public abstract class AbstractCounter implements Countable {
 	private int count;

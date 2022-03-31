@@ -16,10 +16,10 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.utils;
+package io.github.mrmathami.utils;
 
-import mrmathami.annotations.Nonnull;
-import mrmathami.annotations.Nullable;
+import io.github.mrmathami.annotations.Nullable;
+import io.github.mrmathami.annotations.Nonnull;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.Executors;

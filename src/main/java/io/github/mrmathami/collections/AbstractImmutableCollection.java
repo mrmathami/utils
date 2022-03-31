@@ -16,15 +16,14 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.collections;
+package io.github.mrmathami.collections;
 
-import mrmathami.annotations.Nonnull;
+import io.github.mrmathami.annotations.Nonnull;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.function.Predicate;
 
-import static mrmathami.collections.ImmutableCollections.up;
+import static io.github.mrmathami.collections.ImmutableCollections.up;
 
 abstract class AbstractImmutableCollection<E> implements Collection<E> {
 

@@ -16,15 +16,15 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.collections.test;
+package io.github.mrmathami.collections.test;
 
 import com.google.common.collect.testing.MapTestSuiteBuilder;
 import com.google.common.collect.testing.TestStringMapGenerator;
 import com.google.common.collect.testing.features.CollectionFeature;
 import com.google.common.collect.testing.features.CollectionSize;
 import com.google.common.collect.testing.features.MapFeature;
+import io.github.mrmathami.collections.ImmutableOrderedMap;
 import junit.framework.Test;
-import mrmathami.collections.ImmutableOrderedMap;
 
 import java.util.Map;
 

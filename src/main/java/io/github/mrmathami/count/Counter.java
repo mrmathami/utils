@@ -16,21 +16,26 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.utils;
+package io.github.mrmathami.count;
 
-import mrmathami.annotations.Nonnull;
+import io.github.mrmathami.annotations.Nonnull;
 
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.io.Serializable;
 
-public final class StreamUtils {
+public final class Counter extends AbstractCounter implements Serializable, Cloneable {
+	private static final long serialVersionUID = -1L;
 
-	private StreamUtils() {
+	public Counter(int count) {
+		super(count);
 	}
 
 	@Nonnull
-	public static <T> Stream<T> stream(@Nonnull Iterable<T> iterable) {
-		return StreamSupport.stream(iterable.spliterator(), false);
+	@Override
+	public Counter clone() {
+		try {
+			return (Counter) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
 	}
-
 }

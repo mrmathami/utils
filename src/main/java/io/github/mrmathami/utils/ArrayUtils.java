@@ -16,9 +16,9 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.utils;
+package io.github.mrmathami.utils;
 
-import mrmathami.annotations.Nonnull;
+import io.github.mrmathami.annotations.Nonnull;
 
 import java.lang.reflect.Array;
 import java.util.Random;

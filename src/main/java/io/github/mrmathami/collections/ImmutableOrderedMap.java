@@ -16,10 +16,10 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.collections;
+package io.github.mrmathami.collections;
 
-import mrmathami.annotations.Nonnull;
-import mrmathami.annotations.Nullable;
+import io.github.mrmathami.annotations.Nonnull;
+import io.github.mrmathami.annotations.Nullable;
 
 import java.io.InvalidObjectException;
 import java.io.ObjectStreamException;
@@ -37,12 +37,12 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 
-import static mrmathami.collections.ImmutableCollections.createArray;
-import static mrmathami.collections.ImmutableCollections.createPointers;
-import static mrmathami.collections.ImmutableCollections.elementAt;
-import static mrmathami.collections.ImmutableCollections.nothing;
-import static mrmathami.collections.ImmutableCollections.probePointers;
-import static mrmathami.collections.ImmutableCollections.up;
+import static io.github.mrmathami.collections.ImmutableCollections.createArray;
+import static io.github.mrmathami.collections.ImmutableCollections.createPointers;
+import static io.github.mrmathami.collections.ImmutableCollections.elementAt;
+import static io.github.mrmathami.collections.ImmutableCollections.nothing;
+import static io.github.mrmathami.collections.ImmutableCollections.probePointers;
+import static io.github.mrmathami.collections.ImmutableCollections.up;
 
 /**
  * ImmutableOrderedMap is a read-only memory-efficient thread-safe {@link Map}

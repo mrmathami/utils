@@ -16,11 +16,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package mrmathami.annotations;
+package io.github.mrmathami.utils;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import io.github.mrmathami.annotations.Nonnull;
 
-@Retention(RetentionPolicy.SOURCE)
-public @interface Nonnull {
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+public final class StreamUtils {
+
+	private StreamUtils() {
+	}
+
+	@Nonnull
+	public static <T> Stream<T> stream(@Nonnull Iterable<T> iterable) {
+		return StreamSupport.stream(iterable.spliterator(), false);
+	}
+
 }
